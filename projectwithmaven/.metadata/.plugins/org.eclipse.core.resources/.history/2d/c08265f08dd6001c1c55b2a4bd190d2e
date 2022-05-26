@@ -1,0 +1,12 @@
+package com.fetch;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class FetchDemo {
+public static void main(String[] args) {
+	System.out.println("Running");
+	SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	
+}
+}

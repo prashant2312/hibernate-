@@ -1,0 +1,17 @@
+package com.hql;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.tute.Student;
+
+import java.util.List;
+
+import org.hibernate.Query;
+
+public class HqlExample {
+	public static void main(String [] a) {
+		
+	}
+}

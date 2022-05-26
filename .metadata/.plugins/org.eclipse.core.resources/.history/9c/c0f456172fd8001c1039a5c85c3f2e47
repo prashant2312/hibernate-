@@ -1,0 +1,43 @@
+package com.cascade;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.fetch.Answers;
+import com.fetch.Questions;
+
+public class CascadeExample {
+public static void main(String[] args) {
+	System.out.println("Running");
+	SessionFactory factory=new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	Questions q1=new Questions();
+	q1.setQuestionId(12);
+	q1.setQuestion("What is spring");
+	
+	Answers a1 = new Answers(65,"used for backend");
+	Answers a2 = new Answers(324,"second2");
+	Answers a3 = new Answers(98,"third3");
+	
+	List<Answers> list=new ArrayList<Answers>();
+	list.add(a3);
+	list.add(a2);
+	list.add(a1);
+	
+	q1.setAnswer(list);
+	
+	Session s=factory.openSession();
+	Transaction transaction = s.beginTransaction();
+	
+	s.save(q1);
+	
+	transaction.commit();
+	
+	factory.close();
+	System.out.println("Done");
+}
+}
